@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt=BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width= initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https: //fonts.googleapis.com/css2? família= Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500 & display=swap"
+      rel="stylesheet"
+    />
+    <title>Let's Dev</title>
+  </head>
+  <body>
+    <div id="container">
+      <div class="header">
+        <h1>Formulário 2ª Edição</h1>
+        <h3>
+          Seja bem-vindo(a) ao primeiro desafio da sua jornada de aprendizado
+        </h3>
+        <p>
+          Preencha corretamente os campos abaixo para ingressar nessa SUPER
+          JORNADA com o time Paipe!
+        </p>
+        <img src="./lets-dev.png" width="500px" height="300px" />
+      </div>
+      <hr />
+      <form id="form" onsubmit="enviarFormulario()">
+        <p class="warning-text">
+          <b>ATENÇÃO:</b> os campos cintendo o asterisco(*) são de preenchiento
+          obrigatório!
+        </p>
+        <section class="row-gap">
+          <div class="column-gap">
+            <label for="name">Nome completo:*</label>
+            <input
+              id="name"
+              name="nome"
+              type="text"
+              required
+              style="width: 300px"
+              placeholder="Digite aqui..."
+            />
+          </div>
+          <div class="column-gap">
+            <label for="age">Idade:</label>
+            <input id="age" type="number" name="idade" />
+          </div>
+        </section>
+        <section class="row-gap">
+          <div class="column-gap">
+            <label for="Occupation">Ocupação:</label>
+            <select id="Occupation" style="width: 150px" name="ocupacao">
+              <option>Desempregado</option>
+              <option>Empregado CLT</option>
+              <option>Empregado PJ</option>
+            </select>
+          </div>
+          <div class="column-gap">
+            <label for="Area">Área de preferência:</label>
+            <div class="row-gap">
+              <div class="label-input">
+                <input
+                  id="Front-end"
+                  type="radio"
+                  class="input-radio"
+                  name="area-preferencia"
+                />
+                <label for="Front-end">Front-end</label>
+              </div>
+              <div class="label-input">
+                <input
+                  id="Back-end"
+                  type="radio"
+                  class="input-radio"
+                  name="area-preferencia"
+                />
+                <label for="Back-end">Back-end</label>
+              </div>
+              <div class="label-input">
+                <input
+                  id="Full-stack"
+                  type="radio"
+                  class="input-radio"
+                  name="area-preferencia"
+                />
+                <label for="Full-stack">Full-stack</label>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div class="column-gap">
+          <label for="select-file">Anexar currículo:</label>
+          <input id="select-file" type="file" name="curriculo" />
+        </div>
+        <div class="column-gap">
+          <label for="Description">Descrição do perfil do candidato:</label>
+          <textarea
+            id="Description"
+            placeholder="Digite aqui..."
+            name="descricao-perfil"
+            style="
+              min-height: 50px;
+              min-width: 400px;
+              max-width: 100%;
+              max-height: 150px;
+            "
+          >
+          </textarea>
+        </div>
+        <div class="row-gap">
+          <div style="display: flex; align-items: center; gap: 3px">
+            <input id="Notification" type="checkbox" name="receber-email" />
+            <label for="Notification"
+              >Deseja receber notificações sobre vagas por e-mail.</label
+            >
+          </div>
+        </div>
+        <div
+          class="row-gap"
+          style="justify-content: space-between; padding-top: 50px"
+        >
+          <button class="button-cancel" type="button" onclick="cancelar()">
+            Cancelar
+          </button>
+          <input type="submit" value="Enviar" class="input-submit" />
+        </div>
+      </form>
+    </div>
+    <script>
+      const cancelar = () => {
+        event.preventDefault();
+        alert("Cancelando...");
+      };
+
+      function tagPorNome(nomeTag, isRadioButton) {
+        const tag = document.getElementsByName(nomeTag);
+
+        if (isRadioButton) {
+          for (let pos = 0; pos < tag.length; pos++) {
+            if (tag[pos].checked) return tag[pos];
+          }
+        } else return tag[0];
+      }
+
+      function enviarFormulario() {
+        event.preventDefault();
+
+        const nome = tagPorNome("nome")?.value;
+        const idade = tagPorNome("idade")?.value;
+        const ocupacao = tagPorNome("ocupacao")?.value;
+        const areaPreferencia = tagPorNome("area-preferencia")?.value;
+        const curriculo = tagPorNome("curriculo")?.value;
+        const descricaoPerfil = tagPorNome("descricao-perfil")?.value;
+        const receberEmail = tagPorNome("receber-email")?.value;
+
+        const mensagem = `${nome}, tem ${idade} anos e atualmente é ${ocupacao}. Se ingressar no mundo do desenvolvimento, tem preferência por atuar como ${areaPreferencia}.
+        Em sua descrição de perfil consta: "${descricaoPerfil}"
+        Deseja receber e-mail: ${receberEmail ? "Sim" : "Não"} 
+        Currículo: ${curriculo ? curriculo.files[0].name : "Não informado"}`;
+
+        alert(mensagem);
+      }
+      const enviar = () => {
+        window.alert("Dados enviados!");
+      };
+    </script>
+  </body>
+</html>
