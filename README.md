@@ -2,7 +2,7 @@
  
  <img width="617" alt="image" src="https://user-images.githubusercontent.com/101811144/200813667-994e8361-67f2-4f2a-87f0-168eaa30cee9.png">
 
--- Projeto criado no treinamneto Let´s Dev. Ao conferir este projeto, você pode conhecer um pouco mais sobre mim, a Paipe e os professores do curso.
+-- Projeto criado no treinamento Let´s Dev. Ao conferir este projeto, você pode conhecer um pouco mais sobre mim, a Paipe e os professores do curso.
 
 -- Criado com React.
 
